@@ -23,4 +23,10 @@ def get_executed_only():
             continue
     return executed_list
 #a = get_executed_only()
-#print(len(a))
+#print(a)
+def get_sorted_list():
+    executed_only =get_executed_only()
+    sorted_list = sorted(executed_only, key=lambda operation: operation["date"], reverse=True)
+    return sorted_list
+#b = get_sorted_list()
+#print(b)
