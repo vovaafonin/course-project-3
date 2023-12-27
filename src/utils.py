@@ -6,6 +6,7 @@ operations_path = os.path.join(ROOT_DIR, "src", "operations.json")
 
 
 def get_all_operations(path):
+    """Функция получает все операции по счетам"""
     with open(path, encoding='utf-8') as file:
         content = json.load(file)
     return content
@@ -15,6 +16,7 @@ def get_all_operations(path):
 # print(len(all_operationss))
 # all_operations = get_all_operations(operations_path)
 def get_executed_only(all_operations):
+    """Функция получает ТОЛЬКО успешно-выполненные операции"""
     executed_list = []
     for operation in all_operations:
         if operation.get("state") == "EXECUTED":
@@ -28,6 +30,7 @@ def get_executed_only(all_operations):
 # print(a)
 # executed_only =get_executed_only(all_operations)
 def get_sorted_list(executed_only):
+    """Функция сортирует операции, полученные в предыдущей функции, по дате """
     sorted_list = sorted(executed_only, key=lambda operation: operation["date"], reverse=True)
     return sorted_list
 
@@ -35,13 +38,15 @@ def get_sorted_list(executed_only):
 # b = get_sorted_list(executed_only)
 # print(b)
 def get_formated_date(data):
+    """Функция преобразует дату в формат ДД.ММ.ГГГГ"""
     date = data[0:10]
     date.split('-')
     my_date = ".".join(reversed(date.split('-')))
-    return (my_date)
+    return my_date
 
 
 def hide_requisites(requisites):
+    """Функция маскирует номера карт и счетов"""
     parts = requisites.split()
     number = parts[-1]
     if requisites.lower().startswith('счет'):
@@ -54,6 +59,7 @@ def hide_requisites(requisites):
 
 
 def get_formated_operation(operation):
+    """Функция выводит информацию по операции в нужном формате"""
     formated_date = get_formated_date(operation['date'])
     type_operation = operation['description']
     one_line_output = f"{formated_date} {type_operation}"
