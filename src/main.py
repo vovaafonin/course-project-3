@@ -4,6 +4,7 @@ from utils import get_executed_only
 from utils import get_sorted_list
 from utils import get_formated_operation
 
+
 def main():
     all_operations = get_all_operations(operations_path)
     executed_only = get_executed_only(all_operations)

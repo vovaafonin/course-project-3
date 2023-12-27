@@ -11,9 +11,9 @@ def get_all_operations(path):
     return content
 
 
-#all_operationss = get_all_operations(operations_path)
-#print(len(all_operationss))
-#all_operations = get_all_operations(operations_path)
+# all_operationss = get_all_operations(operations_path)
+# print(len(all_operationss))
+# all_operations = get_all_operations(operations_path)
 def get_executed_only(all_operations):
     executed_list = []
     for operation in all_operations:
@@ -22,19 +22,24 @@ def get_executed_only(all_operations):
         else:
             continue
     return executed_list
-#a = get_executed_only()
-#print(a)
-#executed_only =get_executed_only(all_operations)
+
+
+# a = get_executed_only()
+# print(a)
+# executed_only =get_executed_only(all_operations)
 def get_sorted_list(executed_only):
     sorted_list = sorted(executed_only, key=lambda operation: operation["date"], reverse=True)
     return sorted_list
-#b = get_sorted_list(executed_only)
-#print(b)
+
+
+# b = get_sorted_list(executed_only)
+# print(b)
 def get_formated_date(data):
     date = data[0:10]
     date.split('-')
     my_date = ".".join(reversed(date.split('-')))
-    return(my_date)
+    return (my_date)
+
 
 def hide_requisites(requisites):
     parts = requisites.split()
@@ -46,6 +51,8 @@ def hide_requisites(requisites):
     parts[-1] = hided_number
 
     return " ".join(parts)
+
+
 def get_formated_operation(operation):
     formated_date = get_formated_date(operation['date'])
     type_operation = operation['description']
@@ -63,4 +70,3 @@ def get_formated_operation(operation):
     three_line_output = f"{amount} {currency}"
 
     return f"{one_line_output}\n{two_line_output}\n{three_line_output}\n"
-
