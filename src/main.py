@@ -1,16 +1,18 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from utils import get_all_operations
+from utils import operations_path
+from utils import get_executed_only
+from utils import get_sorted_list
+from utils import get_formated_operation
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    all_operations = get_all_operations(operations_path)
+    executed_only = get_executed_only(all_operations)
+    sorted_list = get_sorted_list(executed_only)
+    last_five_operations = sorted_list[0:5]
+    for operation in last_five_operations:
+        print(get_formated_operation(operation))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+if __name__ == "__main__":
+    main()
